@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 
 import javax.annotation.processing.Generated;
 import java.awt.*;
+import java.time.LocalDate;
 
 
 public record CreateEntity(
@@ -16,7 +17,8 @@ public record CreateEntity(
         Category category,
         Method method,
         int amount,
-        Continue Continue,
-        String memo
+        Continue cont,
+        String memo,
+        LocalDate date
 ) {
 }

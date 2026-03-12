@@ -12,15 +12,15 @@ import java.util.List;
 @Mapper
 @Repository
 public interface CreateRepository {
-    @Select("SELECT id,category,method,amount,Continue,memo FROM passbook;")
+    @Select("SELECT id,category,method,amount,Continue AS cont,memo,date FROM passbook;")
     public List<CreateEntity> select();
 
     @Select("SELECT COALESCE(SUM(amount),0) FROM passbook")
     int sumAmount();
 
     @Insert("""
-    INSERT INTO passbook (category,method,amount,Continue,memo)
-    VALUES (#{passbook.category},#{passbook.method},#{passbook.amount},#{passbook.Continue},#{passbook.memo})
+    INSERT INTO passbook (category,method,amount,Continue,memo,date)
+    VALUES (#{passbook.category},#{passbook.method},#{passbook.amount},#{passbook.cont},#{passbook.memo},#{passbook.date})
     """)
     void create(@Param("passbook") CreateEntity createentity);
 

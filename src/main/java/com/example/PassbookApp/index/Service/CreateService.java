@@ -1,8 +1,10 @@
 package com.example.PassbookApp.index.Service;
 
 import com.example.PassbookApp.index.Entity.CreateEntity;
+import com.example.PassbookApp.index.Entity.PassbookEntity;
 import com.example.PassbookApp.index.Entity.RegisterEntity;
 import com.example.PassbookApp.index.Repository.CreateRepository;
+import com.example.PassbookApp.index.Repository.PassbookRepository;
 import com.example.PassbookApp.index.Repository.RegisterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,11 +16,15 @@ import java.util.List;
 public class CreateService {
     private final CreateRepository createRepository;
     private final RegisterRepository registerRepository;
+    private final PassbookRepository passbookRepository;
     public List<CreateEntity> find(){
         return createRepository.select();
     }
 
     public List<RegisterEntity> findOpportunity(){return registerRepository.select();}
+
+    public List<PassbookEntity> findPassbook(int year,int month){return passbookRepository.findByYearMonth(year,month);
+    }
 
     public void create(CreateEntity createEntity){
         createRepository.create(createEntity);

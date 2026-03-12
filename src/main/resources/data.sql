@@ -17,13 +17,13 @@ VALUES
 
 INSERT INTO Amounts
 (
-     totalAmount,
-     targetAmount,
-     difference
+    totalAmount,
+    targetAmount,
+    difference
 )
 VALUES
     (
-    '0',
-    '0',
-    '0'
-);
+        '0',
+        '0',
+        '0'
+    );

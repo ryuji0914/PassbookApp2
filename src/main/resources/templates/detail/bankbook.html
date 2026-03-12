@@ -10,9 +10,14 @@
     <link rel="stylesheet" th:href="@{/bankbook.css}">
 </head>
 <body>
-<h1>~月の支出一覧</h1>
+<div class="title">
+    <h1 th:text="${month} + '月の支出一覧'"></h1>
+    <a th:href="@{/}" class="back-btn">
+        <button type="button">戻る</button>
+    </a>
+</div>
 <div class="button">
-    <a th:href="@{/create}">
+    <a th:href="@{/create(year=${year}, month=${month})}">
         <button type="button">新規登録</button>
     </a>
     <a th:href="@{/targetMoney}">
@@ -34,7 +39,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr th:each="passbook : ${find}" th:object="${passbook}">
+        <tr th:each="passbook : ${list}" th:object="${passbook}">
             <td>
                 <button type="submit" name="edit">編集</button>
             </td>
@@ -45,7 +50,7 @@
             <td th:text="*{category}"></td>
             <td th:text="*{method}"></td>
             <td th:text="*{amount}"></td>
-            <td th:text="*{Continue.label}"></td>
+            <td th:text="*{cont.label}"></td>
             <td th:text="*{memo}"></td>
         </tr>
     </tbody>

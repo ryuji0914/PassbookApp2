@@ -5,7 +5,8 @@ CREATE TABLE passbook
     method VARCHAR(256) NOT NULL,
     amount INT,
     Continue VARCHAR(256) NOT NULL,
-    memo TEXT
+    memo TEXT,
+    date DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE Amounts

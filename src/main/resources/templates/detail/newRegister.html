@@ -9,6 +9,9 @@
 <h1> 新規登録画面</h1>
 <form id="form" name="form" th:action="@{/detail}" method="POST">
 
+    <input type="hidden" name="year" th:value="${year}">
+    <input type="hidden" name="month" th:value="${month}">
+
     <div class="form-row">
         <label for="category">カテゴリー</label>
         <select id="category" name="category">
@@ -49,7 +52,10 @@
 
     <div class="form-row">
         <label for="date">登録日</label>
-        <input type="date" id="date" name="date">
+        <input type="date" id="date" name="date"
+               th:min="${year + '-' + (month < 10 ? '0' + month : month) + '-01'}"
+               th:max="${year + '-' + (month < 10 ? '0' + month : month) + '-31'}"
+        >
     </div>
 
     <div class="form-row">
